@@ -13,28 +13,7 @@ class Task:
         self.color=color
 
     def get_time_of_task(self):
-        start = self.start_time.split(":")
-        end = self.end_time.split(":")
-        start_hour = self.make_int(str(start[0]))
-        start_minutes = self.make_int(str(start[1]))
-        
-        end_hour = self.make_int(str(end[0]))
-        end_minutes = self.make_int(str(end[1]))
-
-        start_is_greater = False
-        extra = 0
-
-        if start_minutes > 0:
-            start_hour+=1
-            start_is_greater = True
-
-        time = end_hour-start_hour
-        if time < 0:
-            time = time*-1
-        if start_is_greater:
-            extra = 60-start_minutes
-        time = ((time*60) + extra + end_minutes)/60.0
-        self.total_time = time
+        self.total_time = self.end_time - self.start_time
     
     def make_int(self,time):
         arr = []
